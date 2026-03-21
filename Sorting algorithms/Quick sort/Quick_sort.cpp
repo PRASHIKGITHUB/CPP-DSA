@@ -1,49 +1,61 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
-void swap(int &a, int &b)
+
+int partition(vector<int> &arr, int s, int e)
 {
-    int temp = a;
-    a = b;
-    b = temp;
-}
-int partition(int arr[], int first, int last)
-{
-    int pivot = arr[last];
-    int i = first - 1; // for insetting elements < pivot
-    int j = first;     // for finding elements < pivot
-    for (; j < last; j++)
+    int cnt = 0;
+    int pivot = arr[s];
+    for (int i = s + 1; i <= e; i++)
     {
-        if (arr[j] < pivot)
+        if (arr[i] <= pivot)
         {
-            i++;
-            swap(arr[i], arr[j]);
+            cnt++;
         }
     }
-    //now i is pointing to the laste element < pivot
-    // correct position for pivot will be --> i+1
-    swap(arr[i + 1], arr[last]);
-    return i + 1;
+
+    int pivotIndex = s + cnt;
+    swap(arr[pivotIndex], arr[s]);
+    int i = s;
+    int j = e;
+    while (i < pivotIndex && j > pivotIndex)
+    {
+        while (arr[i] <= pivot)
+        {
+            i++;
+        }
+        while (arr[e] > pivot)
+        {
+            j--;
+        }
+
+        if (i < pivotIndex && j > pivotIndex)
+        {
+            swap(arr[i++], arr[j--]);
+        }
+    }
+    return pivotIndex;
 }
-void QuickSort(int arr[], int first, int last)
+void quickSort(vector<int> &nums, int s, int e)
 {
-    if (first >= last)
+    if (s >= e)
     {
         return;
     }
-    int pi = partition(arr, first, last);
-    QuickSort(arr, first, pi - 1);//recursive case
-    QuickSort(arr, pi + 1, last);
-}
 
+    int k = partition(nums, s, e);
+
+    quickSort(nums, s, k - 1);
+    quickSort(nums, k + 1, e);
+}
 int main()
 {
-    int arr[] = {2, 456, 74, 3, 7, 8, 3, 26, 9};
-    int n = sizeof(arr) / sizeof(arr[0]);
-    
-    QuickSort(arr, 0, n-1);
-    for (int i = 0; i < n; i++)
+    vector<int> v = {-4, 0, 7, 4, 9, -5, -1, 0, -7, -1};
+    quickSort(v, 0, v.size() - 1);
+    for (auto i : v)
     {
-        cout << arr[i] << " ";
+        cout << i << " ";
     }
+    cout << endl;
+    // -4,0,7,4,9,-5,-1,0,-7,-1
     return 0;
 }

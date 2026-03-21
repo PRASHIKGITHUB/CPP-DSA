@@ -5,7 +5,7 @@ using namespace std;
 
 int main()
 {
-    vector<int> v; // if size were mentioned you could have used it as a array while taking input
+    vector<int> v; // if size were mentioned you could have used it as an array while taking input
     for (int i = 0; i < 5; i++)
     {
         int temp;

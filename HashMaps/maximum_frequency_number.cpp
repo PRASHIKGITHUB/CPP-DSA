@@ -3,7 +3,7 @@ using namespace std;
 int maximumFrequency(vector<int> &arr, int n)
 {
     unordered_map<int,int> count;
-    int maxfre;
+    int maxfre=INT_MIN;
     int ans;
     for(int i=0;i<n;i++){
         count[arr[i]]++;

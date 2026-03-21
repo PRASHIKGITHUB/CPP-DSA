@@ -41,7 +41,7 @@ public:
         cout << endl;
     }
 
-    void deleteFromHeap()
+    void deleteFromHeap()//it will always delete the max element that is first element
     {
         if (size == 0)
         {
@@ -52,7 +52,7 @@ public:
         // put last node element at root node
         arr[1] = arr[size];
 
-        // remove lase node
+        // remove last node
         size--;
 
         // put root node at corect position
@@ -63,13 +63,13 @@ public:
             int leftIndex = 2 * i;
             int rightIndex = 2 * i + 1;
 
-            if (leftIndex < size && arr[i] < arr[leftIndex] && arr[leftIndex] > arr[rightIndex])
+            if (leftIndex < size && arr[i] < arr[leftIndex] && arr[leftIndex] > arr[rightIndex])//leftIndex par dal diya
             {
                 swap(arr[i], arr[leftIndex]);
                 i = leftIndex;
             }
 
-            else if (rightIndex < size && arr[i] < arr[rightIndex] && arr[leftIndex] < arr[rightIndex])
+            else if (rightIndex < size && arr[i] < arr[rightIndex] && arr[leftIndex] < arr[rightIndex])//right index par dal diya
             {
                 swap(arr[i], arr[rightIndex]);
                 i = rightIndex;
@@ -121,7 +121,7 @@ int main()
     // h.print();
     int arr[] = {-1, 1, 2, 3, 4, 5, 6, 7};
     int n = 7;
-    for (int i = n / 2; i > 0; i--)
+    for (int i = n / 2; i >=1; i--)//you dont need to do this for leaf nodes
     {
         heapify(arr, n, i);
     }

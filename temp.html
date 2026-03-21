@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Cell that spans two rows</h2>
+    <p>To make a cell span more than one row, use the rowspan attribute.</p>
+
+    <table style="width:100%">
+        <tr>
+            <th class="cell">s no.</th>
+            <th class="cell">username</th>
+            <th class="cell">status 1</th>
+            <th class="cell">status 2</th>
+            <th class="cell">sdfd</th>
+            
+        </tr>
+        <tr>
+            <td class="cell">1</td>
+            <td class="cell">John</td>
+            <td class="cell" >logged out</td>
+            <td class="cell">logged out</td>
+        </tr>
+        <tr>
+            <td class="cell">2</td>
+            <td class="cell">ben</td>
+            <td class="cell" colspan="2">logged out</td>
+            <td class="cell" colspan="2">logged out</td>
+        </tr>
+        <tr>
+            <td class="cell">3</td>
+            <td class="cell">anita</td>
+            <td class="cell" rowspan="2">logged out</td>
+        </tr>
+    </table>
+</body>
+
+</html>
